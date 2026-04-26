@@ -15,6 +15,7 @@ const certifications = [
     platform: 'Coursera',
     date: 'Mar 2026',
     credentialId: 'VM0Z689O87H9',
+    credentialUrl: 'https://www.coursera.org/account/accomplishments/professional-cert/VM0Z689O87H9',
     skills: ['Product Management', 'Product Strategy', 'Generative AI', 'Prompt Engineering', 'AI Product Development'],
     description:
       'Covered AI product management fundamentals, generative AI, prompt engineering, and end-to-end product development. Hands-on experience with ChatGPT and DALL·E in real-world use cases.',
@@ -26,6 +27,7 @@ const certifications = [
     platform: 'Coursera',
     date: 'Mar 2026',
     credentialId: '29RT479K27EL',
+    credentialUrl: 'https://www.coursera.org/account/accomplishments/specialization/29RT479K27EL',
     skills: ['Agile Project Management', 'Scrum', 'Stakeholder Communication', 'Risk Management', 'Jira', 'Asana'],
     description:
       'Hands-on experience in Agile & Scrum methodologies, project planning, stakeholder management, risk management, and project lifecycle management.',
@@ -34,9 +36,10 @@ const certifications = [
   {
     name: 'ServiceNow IT Leadership Professional Certificate',
     issuer: 'ServiceNow',
-    platform: 'ServiceNow',
+    platform: 'LinkedIn Learning',
     date: 'Nov 2024',
     credentialId: 'c073f5c8f0ec',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/c073f5c8f0ec18cca09bbe16ab2ce4136536b9bddd4d733936d2798893943fef',
     skills: ['IT Project & Program Management', 'IT Architectures', 'IT Strategic Planning'],
     description:
       'Comprehensive program covering IT leadership, architecture, strategic planning, and project program management.',
@@ -45,9 +48,10 @@ const certifications = [
   {
     name: 'Atlassian Agile Project Management Professional Certificate',
     issuer: 'Atlassian',
-    platform: 'Atlassian',
+    platform: 'LinkedIn Learning',
     date: 'Aug 2024',
     credentialId: '913d67f732bc',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/913d67f732bc13296df806f5ae5e09e71964c9084e00219cbd319bd593bf8bc6',
     skills: ['Agile Project Management', 'Jira', 'Scrum Frameworks', 'Kanban'],
     description:
       'Deep understanding of Agile methodologies, Scrum frameworks, and project management best practices with hands-on Jira experience.',
@@ -59,6 +63,7 @@ const certifications = [
     platform: 'HackerRank',
     date: 'Oct 2024',
     credentialId: '0b99c4e79a8b',
+    credentialUrl: 'https://www.hackerrank.com/certificates/iframe/0b99c4e79a8b',
     skills: ['Problem Solving', 'SQL', 'REST APIs', 'Data Structures'],
     description:
       'Validates core software engineering skills including problem solving, SQL, and REST API design and implementation.',
@@ -67,9 +72,10 @@ const certifications = [
   {
     name: 'HackerRank Frontend Developer (React) Certification',
     issuer: 'HackerRank',
-    platform: 'HackerRank',
+    platform: 'CutShort',
     date: 'Oct 2024',
-    credentialId: '0b99c4e79a8b',
+    credentialId: '75241',
+    credentialUrl: 'https://cutshort.io/certificate/75241',
     skills: ['React.js', 'JavaScript', 'CSS', 'Front-end Coding'],
     description:
       'Certifies proficiency in React.js, JavaScript, and CSS for building modern, responsive frontend applications.',
@@ -81,7 +87,8 @@ const certifications = [
     platform: 'HackerRank',
     date: 'Oct 2024',
     credentialId: '683b59b7ffb7',
-    skills: ['MySQL', 'SQL', 'Advanced Queries', 'Database Design'],
+    credentialUrl: 'https://www.hackerrank.com/certificates/iframe/683b59b7ffb7',
+    skills: ['MySQL', 'SQL', 'Advanced Queries', 'Window Functions'],
     description:
       'Demonstrates advanced SQL skills including complex queries, joins, window functions, and database optimization.',
     color: '#2ec866',
@@ -92,6 +99,7 @@ const certifications = [
     platform: 'HackerRank',
     date: 'Nov 2024',
     credentialId: 'ba2c8e79239f',
+    credentialUrl: 'https://www.hackerrank.com/certificates/iframe/ba2c8e79239f',
     skills: ['Problem Solving', 'C#', 'Data Structures', 'Algorithms'],
     description:
       'Validates intermediate-level algorithmic problem-solving and data structures proficiency.',
@@ -103,10 +111,11 @@ const certifications = [
     platform: 'HackerRank',
     date: 'Nov 2024',
     credentialId: 'db4134221d99',
-    skills: ['JavaScript', 'Data Structures', 'ES6+', 'Closures & Promises'],
+    credentialUrl: 'https://www.hackerrank.com/certificates/db4134221d99',
+    skills: ['JavaScript', 'ES6+', 'Data Structures', 'Closures & Promises'],
     description:
       'Certifies intermediate JavaScript proficiency including ES6+ features, closures, promises, and data structures.',
-    color: '#2ec866',
+    color: '#f7e018',
   },
   {
     name: 'Career Essentials in GitHub Professional Certificate',
@@ -114,10 +123,66 @@ const certifications = [
     platform: 'LinkedIn Learning',
     date: 'Mar 2024',
     credentialId: '91d078da4cc9',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/91d078da4cc97bf429a1c53e72f3ec7935d5cef4924225b38fe771b202ccc91a',
     skills: ['GitHub', 'Version Control', 'CI/CD', 'Collaboration'],
     description:
       'Covers GitHub fundamentals, version control best practices, CI/CD workflows, and collaborative development.',
     color: '#f0f6fc',
+  },
+  {
+    name: 'LinkedIn Learning Certificate — Course Completion',
+    issuer: 'LinkedIn Learning',
+    platform: 'LinkedIn Learning',
+    date: '2024',
+    credentialId: '8219cb69',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/8219cb692f3702b13ee69f4076b390e325539d615ec7a9c9b9b0c609165a7794',
+    skills: ['Professional Development'],
+    description: 'LinkedIn Learning course completion certificate.',
+    color: '#0a66c2',
+  },
+  {
+    name: 'LinkedIn Learning Certificate — Course Completion',
+    issuer: 'LinkedIn Learning',
+    platform: 'LinkedIn Learning',
+    date: '2024',
+    credentialId: '17da6b66',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/17da6b6668407d3b11844272c478466bf012d5dd7eda28c4ce076d3cabcce753',
+    skills: ['Professional Development'],
+    description: 'LinkedIn Learning course completion certificate.',
+    color: '#0a66c2',
+  },
+  {
+    name: 'LinkedIn Learning Certificate — Course Completion',
+    issuer: 'LinkedIn Learning',
+    platform: 'LinkedIn Learning',
+    date: '2024',
+    credentialId: 'b4d5fdae',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/b4d5fdae98a038e805a7729a705f2092b3d1cbfd75708a21d646c1a18e1405ad',
+    skills: ['Professional Development'],
+    description: 'LinkedIn Learning course completion certificate.',
+    color: '#0a66c2',
+  },
+  {
+    name: 'LinkedIn Learning Certificate — Course Completion',
+    issuer: 'LinkedIn Learning',
+    platform: 'LinkedIn Learning',
+    date: '2024',
+    credentialId: '351fcdc8',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/351fcdc88ff064dee49edc90d6cd522d7b13c40199bff0c8643fc64f140e68d1',
+    skills: ['Professional Development'],
+    description: 'LinkedIn Learning course completion certificate.',
+    color: '#0a66c2',
+  },
+  {
+    name: 'LinkedIn Learning Certificate — Course Completion',
+    issuer: 'LinkedIn Learning',
+    platform: 'LinkedIn Learning',
+    date: '2024',
+    credentialId: '7e94a2fd',
+    credentialUrl: 'https://www.linkedin.com/learning/certificates/7e94a2fde42bcaa2f0cb14994b524fafc60b83562ec5074b1863f60369c70c05',
+    skills: ['Professional Development'],
+    description: 'LinkedIn Learning course completion certificate.',
+    color: '#0a66c2',
   },
 ];
 
@@ -147,7 +212,7 @@ export default function CertificationsPage() {
 
               <p className={styles.subtitle}>
                 Professional certifications spanning AI product management, agile methodologies,
-                software engineering, and full-stack development.
+                software engineering, and full-stack development. Click any card to verify.
               </p>
             </div>
           </div>
@@ -165,11 +230,18 @@ export default function CertificationsPage() {
 
         <div className={certStyles.certList}>
           {certifications.map((cert, index) => (
-            <div key={index} className={certStyles.certCard}>
+            <a
+              key={index}
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={certStyles.certCard}
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
               <div className={certStyles.certLeft}>
                 <div
                   className={certStyles.certBadge}
-                  style={{ background: `${cert.color}18`, borderColor: `${cert.color}30` }}
+                  style={{ background: `${cert.color}18`, borderColor: `${cert.color}35` }}
                 >
                   <span style={{ color: cert.color, fontSize: '11px', fontWeight: 700 }}>
                     {cert.issuer.slice(0, 2).toUpperCase()}
@@ -182,7 +254,12 @@ export default function CertificationsPage() {
               </div>
 
               <div className={certStyles.certBody}>
-                <h3 className={certStyles.certName}>{cert.name}</h3>
+                <div className={certStyles.certNameRow}>
+                  <h3 className={certStyles.certName}>{cert.name}</h3>
+                  <span className={certStyles.viewCert}>
+                    View <VscLinkExternal size={11} />
+                  </span>
+                </div>
                 <p className={certStyles.certIssuer}>{cert.issuer}</p>
                 <p className={certStyles.certDescription}>{cert.description}</p>
                 <div className={certStyles.certSkills}>
@@ -190,9 +267,9 @@ export default function CertificationsPage() {
                     <span key={skill} className={certStyles.certSkillTag}>{skill}</span>
                   ))}
                 </div>
-                <span className={certStyles.certId}>ID: {cert.credentialId}</span>
+                <span className={certStyles.certId}>Credential ID: {cert.credentialId}</span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

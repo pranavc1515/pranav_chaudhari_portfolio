@@ -1,0 +1,141 @@
+/* Download Resume Button */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  overflow: hidden;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.sm {
+  padding: 8px 16px;
+  font-size: 13px;
+  gap: 6px;
+}
+
+.md {
+  padding: 12px 22px;
+}
+
+.lg {
+  padding: 14px 28px;
+  font-size: 15px;
+  gap: 10px;
+}
+
+/* Variants */
+.primary {
+  background: var(--accent-color);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(var(--accent-color-rgb), 0.35);
+}
+
+.primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(var(--accent-color-rgb), 0.45);
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.outline {
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.4);
+}
+
+.outline:hover:not(:disabled) {
+  background: rgba(var(--accent-color-rgb), 0.08);
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.ghost {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* States */
+.loading {
+  opacity: 0.85;
+}
+
+.success.primary {
+  background: #2ec866;
+  box-shadow: 0 4px 18px rgba(46, 200, 102, 0.35);
+}
+
+.success.outline {
+  color: #2ec866;
+  border-color: rgba(46, 200, 102, 0.4);
+}
+
+/* Icon */
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Spinner */
+.spinner {
+  display: flex;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Shimmer overlay (idle primary only) */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  animation: shimmerSlide 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSlide {
+  0% { left: -60%; }
+  100% { left: 160%; }
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}

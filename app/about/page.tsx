@@ -3,6 +3,8 @@
 import { VscGithub, VscMail, VscLinkExternal } from 'react-icons/vsc';
 import Link from 'next/link';
 
+import AnimatedSection from '@/components/AnimatedSection';
+import DownloadResume from '@/components/DownloadResume';
 import styles from '@/styles/AboutPage.module.css';
 
 const experiences = [
@@ -89,16 +91,16 @@ const skillGroups = [
 ];
 
 const certifications = [
-  { name: 'IBM AI Product Manager Professional Certificate', issuer: 'IBM · Coursera', date: 'Mar 2026', id: 'VM0Z689O87H9' },
-  { name: 'Google Project Management Professional Certificate', issuer: 'Google · Coursera', date: 'Mar 2026', id: '29RT479K27EL' },
-  { name: 'ServiceNow IT Leadership Professional Certificate', issuer: 'ServiceNow', date: 'Nov 2024', id: 'c073f5c8...' },
-  { name: 'Atlassian Agile Project Management Professional Certificate', issuer: 'Atlassian', date: 'Aug 2024', id: '913d67f7...' },
-  { name: 'HackerRank Software Engineer Certification', issuer: 'HackerRank', date: 'Oct 2024', id: '0b99c4e7' },
-  { name: 'HackerRank Frontend Developer (React) Certification', issuer: 'HackerRank', date: 'Oct 2024', id: '0b99c4e7' },
-  { name: 'SQL (Advanced) Certificate', issuer: 'HackerRank', date: 'Oct 2024', id: '683b59b7' },
-  { name: 'Problem Solving (Intermediate) Certificate', issuer: 'HackerRank', date: 'Nov 2024', id: 'ba2c8e79' },
-  { name: 'JavaScript (Intermediate) Certificate', issuer: 'HackerRank', date: 'Nov 2024', id: 'db413422' },
-  { name: 'Career Essentials in GitHub Professional Certificate', issuer: 'GitHub', date: 'Mar 2024', id: '91d078da' },
+  { name: 'IBM AI Product Manager Professional Certificate', issuer: 'IBM · Coursera', date: 'Mar 2026', url: 'https://www.coursera.org/account/accomplishments/professional-cert/VM0Z689O87H9' },
+  { name: 'Google Project Management Professional Certificate', issuer: 'Google · Coursera', date: 'Mar 2026', url: 'https://www.coursera.org/account/accomplishments/specialization/29RT479K27EL' },
+  { name: 'ServiceNow IT Leadership Professional Certificate', issuer: 'ServiceNow', date: 'Nov 2024', url: 'https://www.linkedin.com/learning/certificates/c073f5c8f0ec18cca09bbe16ab2ce4136536b9bddd4d733936d2798893943fef' },
+  { name: 'Atlassian Agile Project Management Professional Certificate', issuer: 'Atlassian', date: 'Aug 2024', url: 'https://www.linkedin.com/learning/certificates/913d67f732bc13296df806f5ae5e09e71964c9084e00219cbd319bd593bf8bc6' },
+  { name: 'HackerRank Software Engineer Certification', issuer: 'HackerRank', date: 'Oct 2024', url: 'https://www.hackerrank.com/certificates/iframe/0b99c4e79a8b' },
+  { name: 'HackerRank Frontend Developer (React) Certification', issuer: 'HackerRank / CutShort', date: 'Oct 2024', url: 'https://cutshort.io/certificate/75241' },
+  { name: 'SQL (Advanced) Certificate', issuer: 'HackerRank', date: 'Oct 2024', url: 'https://www.hackerrank.com/certificates/iframe/683b59b7ffb7' },
+  { name: 'Problem Solving (Intermediate) Certificate', issuer: 'HackerRank', date: 'Nov 2024', url: 'https://www.hackerrank.com/certificates/iframe/ba2c8e79239f' },
+  { name: 'JavaScript (Intermediate) Certificate', issuer: 'HackerRank', date: 'Nov 2024', url: 'https://www.hackerrank.com/certificates/db4134221d99' },
+  { name: 'Career Essentials in GitHub Professional Certificate', issuer: 'GitHub', date: 'Mar 2024', url: 'https://www.linkedin.com/learning/certificates/91d078da4cc97bf429a1c53e72f3ec7935d5cef4924225b38fe771b202ccc91a' },
 ];
 
 const AboutPage = () => {
@@ -136,178 +138,197 @@ const AboutPage = () => {
 
         <div className={styles.content}>
           {/* About */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionNumber}>01</span>
-              <h2 className={styles.sectionTitle}>About</h2>
-            </div>
-
-            <div className={styles.sectionBody}>
-              <p className={styles.paragraph}>
-                AI Engineer and Full Stack Developer with 4+ years of experience shipping production
-                web applications and AI-powered products. Currently building GenAI features at
-                Kaitongo — RAG pipelines, agent-based workflows, semantic search, and LLM integrations
-                for a B2B intelligence platform.
-              </p>
-              <p className={styles.paragraph}>
-                My AI journey started with conversational AI (an AI-powered travel chatbot at Avathi),
-                grew through document-processing pipelines at Metapercept (a foundation of today&apos;s RAG
-                systems), and is now focused deeply on building production LLM systems at Kaitongo.
-              </p>
-              <p className={styles.paragraph}>
-                Particularly interested in RAG systems, agent architectures, and teams building tooling
-                that makes AI actually work in production — not just demos.
-              </p>
-            </div>
-          </section>
-
-          {/* Experience */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionNumber}>02</span>
-              <h2 className={styles.sectionTitle}>Experience</h2>
-            </div>
-
-            <div className={styles.sectionBody}>
-              {experiences.map((exp, i) => (
-                <div key={i} className={styles.experienceCard}>
-                  <div className={styles.expMeta}>
-                    <span className={styles.expPeriod}>{exp.period}</span>
-                    <span className={styles.expLocation}>{exp.location}</span>
-                  </div>
-                  <h3 className={styles.expRole}>{exp.role}</h3>
-                  <p className={styles.expCompany}>{exp.company}</p>
-                  <ul className={styles.expList}>
-                    {exp.bullets.map((b, j) => (
-                      <li key={j}>{b}</li>
-                    ))}
-                  </ul>
-                  <div className={styles.expTech}>
-                    {exp.tech.map((t) => (
-                      <span key={t} className={styles.techTag}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Skills */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionNumber}>03</span>
-              <h2 className={styles.sectionTitle}>Skills</h2>
-            </div>
-
-            <div className={styles.sectionBody}>
-              <div className={styles.skillsGrid}>
-                {skillGroups.map((group) => (
-                  <div key={group.label} className={styles.skillCategory}>
-                    <h4 className={styles.skillTitle}>{group.label}</h4>
-                    <div className={styles.skillTags}>
-                      {group.skills.map((skill) => (
-                        <span key={skill} className={styles.skillTag}>{skill}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+          <AnimatedSection>
+            <section className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionNumber}>01</span>
+                <h2 className={styles.sectionTitle}>About</h2>
               </div>
-            </div>
-          </section>
 
-          {/* Education */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionNumber}>04</span>
-              <h2 className={styles.sectionTitle}>Education</h2>
-            </div>
-
-            <div className={styles.sectionBody}>
-              <div className={styles.experienceCard}>
-                <div className={styles.expMeta}>
-                  <span className={styles.expPeriod}>Jan 2026 – Jan 2028</span>
-                </div>
-                <h3 className={styles.expRole}>Master of Business Administration — Marketing</h3>
-                <p className={styles.expCompany}>SVKM&apos;s Narsee Monjee Institute of Management Studies (NMIMS)</p>
-                <p className={styles.expDesc}>
-                  Focusing on Product Strategy, Consumer Behavior, Growth Marketing, and Data-driven decision making.
-                  Bridging software engineering and product management toward AI product leadership.
+              <div className={styles.sectionBody}>
+                <p className={styles.paragraph}>
+                  AI Engineer and Full Stack Developer with 4+ years of experience shipping production
+                  web applications and AI-powered products. Currently building GenAI features at
+                  Kaitongo — RAG pipelines, agent-based workflows, semantic search, and LLM integrations
+                  for a B2B intelligence platform.
+                </p>
+                <p className={styles.paragraph}>
+                  My AI journey started with conversational AI (an AI-powered travel chatbot at Avathi),
+                  grew through document-processing pipelines at Metapercept (a foundation of today&apos;s RAG
+                  systems), and is now focused deeply on building production LLM systems at Kaitongo.
+                </p>
+                <p className={styles.paragraph}>
+                  Particularly interested in RAG systems, agent architectures, and teams building tooling
+                  that makes AI actually work in production — not just demos.
                 </p>
               </div>
+            </section>
+          </AnimatedSection>
 
-              <div className={styles.experienceCard}>
-                <div className={styles.expMeta}>
-                  <span className={styles.expPeriod}>Aug 2018 – Jul 2022</span>
-                </div>
-                <h3 className={styles.expRole}>Bachelor of Technology — Mechanical Engineering</h3>
-                <p className={styles.expCompany}>Rajiv Gandhi Proudyogiki Vishwavidyalaya · GPA: 7.80</p>
+          {/* Experience */}
+          <AnimatedSection delay={50}>
+            <section className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionNumber}>02</span>
+                <h2 className={styles.sectionTitle}>Experience</h2>
               </div>
-            </div>
-          </section>
 
-          {/* Certifications */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionNumber}>05</span>
-              <h2 className={styles.sectionTitle}>Certifications</h2>
-            </div>
-
-            <div className={styles.sectionBody}>
-              <div className={styles.certGrid}>
-                {certifications.map((cert, i) => (
-                  <div key={i} className={styles.certCard}>
-                    <div className={styles.certHeader}>
-                      <span className={styles.certDate}>{cert.date}</span>
-                      <span className={styles.certId}>#{cert.id}</span>
+              <div className={styles.sectionBody}>
+                {experiences.map((exp, i) => (
+                  <AnimatedSection key={i} delay={i * 60}>
+                    <div className={styles.experienceCard}>
+                      <div className={styles.expMeta}>
+                        <span className={styles.expPeriod}>{exp.period}</span>
+                        <span className={styles.expLocation}>{exp.location}</span>
+                      </div>
+                      <h3 className={styles.expRole}>{exp.role}</h3>
+                      <p className={styles.expCompany}>{exp.company}</p>
+                      <ul className={styles.expList}>
+                        {exp.bullets.map((b, j) => (
+                          <li key={j}>{b}</li>
+                        ))}
+                      </ul>
+                      <div className={styles.expTech}>
+                        {exp.tech.map((t) => (
+                          <span key={t} className={styles.techTag}>{t}</span>
+                        ))}
+                      </div>
                     </div>
-                    <p className={styles.certName}>{cert.name}</p>
-                    <p className={styles.certIssuer}>{cert.issuer}</p>
-                  </div>
+                  </AnimatedSection>
                 ))}
               </div>
-              <a
-                href="https://www.linkedin.com/in/thepranavchaudhari/#licenses_and_certifications"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.writingLink}
-                style={{ marginTop: '16px' }}
-              >
-                <span>View all certifications on LinkedIn</span>
-                <VscLinkExternal size={14} />
-              </a>
-            </div>
-          </section>
+            </section>
+          </AnimatedSection>
+
+          {/* Skills */}
+          <AnimatedSection delay={80}>
+            <section className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionNumber}>03</span>
+                <h2 className={styles.sectionTitle}>Skills</h2>
+              </div>
+
+              <div className={styles.sectionBody}>
+                <div className={styles.skillsGrid}>
+                  {skillGroups.map((group, i) => (
+                    <AnimatedSection key={group.label} delay={i * 60}>
+                      <div className={styles.skillCategory}>
+                        <h4 className={styles.skillTitle}>{group.label}</h4>
+                        <div className={styles.skillTags}>
+                          {group.skills.map((skill) => (
+                            <span key={skill} className={styles.skillTag}>{skill}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </AnimatedSection>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </AnimatedSection>
+
+          {/* Education */}
+          <AnimatedSection delay={60}>
+            <section className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionNumber}>04</span>
+                <h2 className={styles.sectionTitle}>Education</h2>
+              </div>
+
+              <div className={styles.sectionBody}>
+                <div className={styles.experienceCard}>
+                  <div className={styles.expMeta}>
+                    <span className={styles.expPeriod}>Jan 2026 – Jan 2028</span>
+                  </div>
+                  <h3 className={styles.expRole}>Master of Business Administration — Marketing</h3>
+                  <p className={styles.expCompany}>SVKM&apos;s Narsee Monjee Institute of Management Studies (NMIMS)</p>
+                  <p className={styles.expDesc}>
+                    Focusing on Product Strategy, Consumer Behavior, Growth Marketing, and Data-driven decision making.
+                    Bridging software engineering and product management toward AI product leadership.
+                  </p>
+                </div>
+
+                <div className={styles.experienceCard}>
+                  <div className={styles.expMeta}>
+                    <span className={styles.expPeriod}>Aug 2018 – Jul 2022</span>
+                  </div>
+                  <h3 className={styles.expRole}>Bachelor of Technology — Mechanical Engineering</h3>
+                  <p className={styles.expCompany}>Rajiv Gandhi Proudyogiki Vishwavidyalaya · GPA: 7.80</p>
+                </div>
+              </div>
+            </section>
+          </AnimatedSection>
+
+          {/* Certifications */}
+          <AnimatedSection delay={70}>
+            <section className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionNumber}>05</span>
+                <h2 className={styles.sectionTitle}>Certifications</h2>
+              </div>
+
+              <div className={styles.sectionBody}>
+                <div className={styles.certGrid}>
+                  {certifications.map((cert, i) => (
+                    <a
+                      key={i}
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.certCard}
+                      style={{ animationDelay: `${i * 40}ms` }}
+                    >
+                      <div className={styles.certHeader}>
+                        <span className={styles.certDate}>{cert.date}</span>
+                        <VscLinkExternal size={10} className={styles.certExtIcon} />
+                      </div>
+                      <p className={styles.certName}>{cert.name}</p>
+                      <p className={styles.certIssuer}>{cert.issuer}</p>
+                    </a>
+                  ))}
+                </div>
+                <Link href="/articles" className={styles.writingLink} style={{ marginTop: '16px', display: 'flex' }}>
+                  <span>View all certifications →</span>
+                </Link>
+              </div>
+            </section>
+          </AnimatedSection>
 
           {/* Languages */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionNumber}>06</span>
-              <h2 className={styles.sectionTitle}>Languages</h2>
-            </div>
+          <AnimatedSection delay={60}>
+            <section className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionNumber}>06</span>
+                <h2 className={styles.sectionTitle}>Languages</h2>
+              </div>
 
-            <div className={styles.sectionBody}>
-              <div className={styles.skillsGrid}>
-                <div className={styles.skillCategory}>
-                  <h4 className={styles.skillTitle}>English</h4>
-                  <div className={styles.skillTags}>
-                    <span className={styles.skillTag}>Full Professional Proficiency</span>
+              <div className={styles.sectionBody}>
+                <div className={styles.skillsGrid}>
+                  <div className={styles.skillCategory}>
+                    <h4 className={styles.skillTitle}>English</h4>
+                    <div className={styles.skillTags}>
+                      <span className={styles.skillTag}>Full Professional Proficiency</span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.skillCategory}>
-                  <h4 className={styles.skillTitle}>Hindi</h4>
-                  <div className={styles.skillTags}>
-                    <span className={styles.skillTag}>Full Professional Proficiency</span>
+                  <div className={styles.skillCategory}>
+                    <h4 className={styles.skillTitle}>Hindi</h4>
+                    <div className={styles.skillTags}>
+                      <span className={styles.skillTag}>Full Professional Proficiency</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </AnimatedSection>
         </div>
 
         <footer className={styles.footer}>
-          <Link href="/projects" className={styles.footerLink}>
-            View my projects →
-          </Link>
+          <div className={styles.footerActions}>
+            <Link href="/projects" className={styles.footerLink}>
+              View my projects →
+            </Link>
+            <DownloadResume variant="outline" size="sm" />
+          </div>
         </footer>
       </div>
     </div>
