@@ -1,0 +1,147 @@
+/* Certifications Page */
+
+.certList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.certCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--explorer-border);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.certCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.certLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.certBadge {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+}
+
+.certMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.certDate {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--accent-color);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.certPlatform {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+.certBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.certName {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.35;
+}
+
+.certIssuer {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.certDescription {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.certSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.certSkillTag {
+  padding: 3px 10px;
+  background: rgba(var(--accent-color-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.15);
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: rgba(255, 255, 255, 0.55);
+  transition: all 0.2s ease;
+}
+
+.certCard:hover .certSkillTag {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.certId {
+  margin-top: 6px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .certCard {
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .certCard:hover {
+    transform: none;
+  }
+
+  .certLeft {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .certMeta {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .certName {
+    font-size: 14px;
+  }
+}
