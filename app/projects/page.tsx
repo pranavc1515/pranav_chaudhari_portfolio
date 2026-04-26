@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { VscFolderOpened, VscGithub, VscLinkExternal } from 'react-icons/vsc';
 
-import ProjectCard from '@/components/ProjectCard';
+import ProjectsList from '@/components/ProjectsList';
 import { projects } from '@/data/projects';
 
 import styles from '@/styles/ProjectsPage.module.css';
@@ -36,13 +36,7 @@ const ProjectsPage = () => {
         </header>
 
         <div className={styles.timeline}>
-          {projects.map((project, index) => (
-            <ProjectCard 
-              key={project.slug} 
-              project={project}
-              index={index + 1}
-            />
-          ))}
+          <ProjectsList projects={projects} />
         </div>
 
         <footer className={styles.footer}>

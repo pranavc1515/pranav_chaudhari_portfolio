@@ -66,12 +66,6 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  animation: fadeInUp 0.5s ease both;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .icon {
@@ -117,7 +111,6 @@
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  animation: fadeInUp 0.5s 0.1s ease both;
 }
 
 .greeting {
@@ -192,7 +185,6 @@
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  animation: fadeInUp 0.5s 0.25s ease both;
 }
 
 .techPill {
@@ -203,23 +195,14 @@
   font-size: 12px;
   font-family: var(--font-mono);
   color: rgba(255, 255, 255, 0.65);
-  transition: all 0.2s ease;
-  animation: fadeInUp 0.4s ease both;
-  opacity: 0;
-}
-
-.techPill:hover {
-  background: rgba(var(--accent-color-rgb), 0.13);
-  border-color: rgba(var(--accent-color-rgb), 0.4);
-  color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-2px);
+  cursor: default;
+  display: inline-block;
 }
 
 /* ── Stats Row ── */
 .statsRow {
   display: flex;
   gap: 0;
-  animation: fadeInUp 0.5s 0.35s ease both;
   border: 1px solid var(--explorer-border);
   border-radius: 10px;
   overflow: hidden;
@@ -265,7 +248,6 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  animation: fadeInUp 0.5s 0.45s ease both;
 }
 
 .primaryAction,
@@ -317,7 +299,6 @@
   gap: 14px;
   padding-top: 28px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  animation: fadeInUp 0.5s 0.55s ease both;
 }
 
 .link {

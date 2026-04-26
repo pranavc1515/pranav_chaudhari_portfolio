@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { VscGithub, VscMail, VscLinkExternal } from 'react-icons/vsc';
 import Link from 'next/link';
 
@@ -108,9 +109,22 @@ const AboutPage = () => {
     <div className={styles.page}>
       <div className={styles.container}>
         {/* Header */}
-        <header className={styles.header}>
+        <motion.header
+          className={styles.header}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+        >
           <div className={styles.headerContent}>
-            <div className={styles.avatar}>PC</div>
+            <motion.div
+              className={styles.avatar}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.45, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+              whileHover={{ scale: 1.06 }}
+            >
+              PC
+            </motion.div>
             <div className={styles.headerText}>
               <h1 className={styles.name}>Pranav Chaudhari</h1>
               <p className={styles.role}>AI Software Engineer @ Kaitongo</p>
@@ -122,19 +136,26 @@ const AboutPage = () => {
           </div>
 
           <div className={styles.headerActions}>
-            <a
+            <motion.a
               href="https://github.com/pranavc1515"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.iconButton}
+              whileHover={{ y: -2, scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <VscGithub size={20} />
-            </a>
-            <Link href="/contact" className={styles.iconButton}>
-              <VscMail size={20} />
-            </Link>
+            </motion.a>
+            <motion.div
+              whileHover={{ y: -2, scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link href="/contact" className={styles.iconButton}>
+                <VscMail size={20} />
+              </Link>
+            </motion.div>
           </div>
-        </header>
+        </motion.header>
 
         <div className={styles.content}>
           {/* About */}
@@ -176,7 +197,10 @@ const AboutPage = () => {
               <div className={styles.sectionBody}>
                 {experiences.map((exp, i) => (
                   <AnimatedSection key={i} delay={i * 60}>
-                    <div className={styles.experienceCard}>
+                    <motion.div
+                      className={styles.experienceCard}
+                      whileHover={{ x: 4, transition: { duration: 0.2, ease: 'easeOut' } }}
+                    >
                       <div className={styles.expMeta}>
                         <span className={styles.expPeriod}>{exp.period}</span>
                         <span className={styles.expLocation}>{exp.location}</span>
@@ -193,7 +217,7 @@ const AboutPage = () => {
                           <span key={t} className={styles.techTag}>{t}</span>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                   </AnimatedSection>
                 ))}
               </div>

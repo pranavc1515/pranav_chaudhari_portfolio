@@ -1,39 +1,49 @@
 'use client';
 
-import { useEffect, useRef, ReactNode } from 'react';
+import { motion, Variants } from 'framer-motion';
+import { ReactNode } from 'react';
 
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: 'up' | 'left' | 'none';
 }
 
-const AnimatedSection = ({ children, className = '', delay = 0 }: AnimatedSectionProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.animationDelay = `${delay}ms`;
-          el.classList.add('animate-fadeInUp');
-          observer.unobserve(el);
-        }
+const AnimatedSection = ({
+  children,
+  className = '',
+  delay = 0,
+  direction = 'up',
+}: AnimatedSectionProps) => {
+  const variants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: direction === 'up' ? 22 : 0,
+      x: direction === 'left' ? -18 : 0,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      transition: {
+        duration: 0.55,
+        ease: [0.23, 1, 0.32, 1],
+        delay: delay / 1000,
       },
-      { threshold: 0.08 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [delay]);
+    },
+  };
 
   return (
-    <div ref={ref} className={className}>
+    <motion.div
+      className={className}
+      variants={variants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-40px' }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
