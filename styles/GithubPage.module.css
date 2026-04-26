@@ -33,6 +33,19 @@
   border: 2px solid var(--accent-color);
 }
 
+.avatarPlaceholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  background: rgba(var(--accent-color-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
 .profileInfo {
   display: flex;
   flex-direction: column;

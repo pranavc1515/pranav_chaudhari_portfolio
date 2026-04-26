@@ -14,28 +14,70 @@ export const metadata: Metadata = {
 
 export const revalidate = 600;
 
-async function getGithubData() {
-  const userRes = await fetch(
-    `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`
-  );
-  if (!userRes.ok) {
-    throw new Error(`Failed to fetch user: ${userRes.status}`);
-  }
-  const user: User = await userRes.json();
+const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'pranavc1515';
 
-  const repoRes = await fetch(
-    `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?sort=pushed&per_page=6`
-  );
-  if (!repoRes.ok) {
-    throw new Error(`Failed to fetch repos: ${repoRes.status}`);
-  }
-  const repos: Repo[] = await repoRes.json();
+async function getGithubData(): Promise<{ user: User | null; repos: Repo[] }> {
+  try {
+    const headers: HeadersInit = process.env.GITHUB_API_KEY
+      ? { Authorization: `token ${process.env.GITHUB_API_KEY}` }
+      : {};
 
-  return { user, repos };
+    const userRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, { headers });
+    if (!userRes.ok) {
+      console.error(`Failed to fetch GitHub user: ${userRes.status}`);
+      return { user: null, repos: [] };
+    }
+    const user: User = await userRes.json();
+
+    const repoRes = await fetch(
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=6`,
+      { headers }
+    );
+    const repos: Repo[] = repoRes.ok ? await repoRes.json() : [];
+
+    return { user, repos };
+  } catch {
+    return { user: null, repos: [] };
+  }
 }
 
 export default async function GithubPage() {
   const { user, repos } = await getGithubData();
+
+  if (!user) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <header className={styles.header}>
+            <div className={styles.profile}>
+              <div className={styles.avatarPlaceholder}>
+                <VscGithub size={36} />
+              </div>
+              <div className={styles.profileInfo}>
+                <h1 className={styles.name}>{GITHUB_USERNAME}</h1>
+                <span className={styles.handle}>@{GITHUB_USERNAME}</span>
+              </div>
+            </div>
+            <a
+              href={`https://github.com/${GITHUB_USERNAME}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.profileLink}
+            >
+              <VscGithub size={18} />
+              <span>View Profile</span>
+              <VscLinkExternal size={14} />
+            </a>
+          </header>
+          <div className={styles.section}>
+            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px' }}>
+              GitHub data will appear once NEXT_PUBLIC_GITHUB_USERNAME is set to a valid GitHub account.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.page}>
@@ -57,7 +99,7 @@ export default async function GithubPage() {
             </div>
           </div>
 
-          <a 
+          <a
             href={`https://github.com/${user.login}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -121,7 +163,7 @@ export default async function GithubPage() {
           <h2 className={styles.sectionTitle}>Contribution Activity</h2>
           <div className={styles.contributions}>
             <GitHubCalendar
-              username={process.env.NEXT_PUBLIC_GITHUB_USERNAME!}
+              username={GITHUB_USERNAME}
               hideColorLegend
               hideMonthLabels
               colorScheme="dark"
@@ -137,26 +179,28 @@ export default async function GithubPage() {
         </section>
 
         {/* Repositories */}
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Popular Repositories</h2>
-            <a 
-              href={`https://github.com/${user.login}?tab=repositories`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.viewAll}
-            >
-              View All
-              <VscLinkExternal size={14} />
-            </a>
-          </div>
-          
-          <div className={styles.reposGrid}>
-            {repos.map((repo) => (
-              <RepoCard key={repo.id} repo={repo} />
-            ))}
-          </div>
-        </section>
+        {repos.length > 0 && (
+          <section className={styles.section}>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>Popular Repositories</h2>
+              <a
+                href={`https://github.com/${user.login}?tab=repositories`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.viewAll}
+              >
+                View All
+                <VscLinkExternal size={14} />
+              </a>
+            </div>
+
+            <div className={styles.reposGrid}>
+              {repos.map((repo) => (
+                <RepoCard key={repo.id} repo={repo} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );
